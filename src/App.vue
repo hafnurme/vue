@@ -1,44 +1,26 @@
 <template>
-
-  <button @click="click">Click</button>
-
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">About</router-link>
+  <router-view />
 </template>
 
 <script>
-import axios from 'axios'
+import Home from './components/Home.vue'
 
 export default {
   name: 'App',
   components: {
-
+    Home
   },
   data() {
     return {
-      data: new FormData()
-    }
-  },
-  mounted() {
-    // dataAdd()
-    login()
-    async function login() {
-      try {
-        const response = await axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
-          body: {
-            id_card_number: 1234567890123456,
-            password: '123abc'
-          }
-        });
-        console.log(response.data)
-      } catch (err) {
-        console.log(err)
-      }
+      posts: []
     }
   },
   methods: {
-    click() {
-      console.log(this.data)
-    }
+    
   }
+
 }
 </script>
 
