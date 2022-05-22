@@ -1,6 +1,19 @@
 <template>
-    <ul v-for="item in data.spots" :key="item.id">
-        <li>{{ item }}</li>
+    <ul v-for="item in data.spots" :key="item.id" class="list-group">
+        <li class="list-group-item">{{ item.id }}</li>
+        <li class="list-group-item">{{ item.name }}</li>
+        <li class="list-group-item">{{ item.address }}</li>
+        <li class="list-group-item">{{ item.serve }}</li>
+        <li class="list-group-item">{{ item.capacity }}</li>
+        <li class="list-group-item">
+            <ul class="list-group">
+                <li class="list-group-item">{{ item.vaccines.Sinovac }}</li>
+                <li class="list-group-item">{{ item.vaccines.AstraZennecca }}</li>
+                <li class="list-group-item">{{ item.vaccines.Moderna }}</li>
+                <li class="list-group-item">{{ item.vaccines.Pfizer }}</li>
+                <li class="list-group-item">{{ item.vaccines.Sinnopharm }}</li>
+            </ul>
+        </li>
     </ul>
 </template>
 
