@@ -1,15 +1,6 @@
 <template>
     <h1>Ini Home</h1>
-    <form action="">
-        <label for="id_card_number">
-            ID Card: <input type="number" ref="id_card_number">
-        </label>
-        <label for="password">
-            Password: <input type="password" ref="password">
-        </label>
-    </form>
-    <button @click="login">Login</button>
-
+        <Login />
     <div class="box">
         <button @click="logout">Logout</button>
     </div>
@@ -17,9 +8,13 @@
 
 <script>
 import axios from 'axios'
+import Login from '../components/Login.vue'
 
 export default {
     name: 'Home',
+    components: {
+        Login
+    },
     methods: {
         login() {
             let data = new FormData();
@@ -49,9 +44,9 @@ export default {
                 method: 'post',
                 url: 'http://127.0.0.1:8000/api/v1/auth/logout',
                 headers: {
-                    'Authorization': 'Bearer '+localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
-            }).then(response=>{
+            }).then(response => {
                 localStorage.removeItem('token')
                 this.$router.push({ name: 'About' })
             })
